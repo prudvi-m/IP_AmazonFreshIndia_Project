@@ -1,5 +1,5 @@
+// ApplicationDbContext.cs
 using Microsoft.EntityFrameworkCore;
-using IP_AmazonFreshIndia_Project.Models;
 
 namespace IP_AmazonFreshIndia_Project.Data
 {
@@ -38,7 +38,8 @@ namespace IP_AmazonFreshIndia_Project.Data
 					Unit = "LB",
 					VendorId = 1,
 					WarehouseId = 1,
-					SoldCount = 10
+					SoldCount = 10,
+					Category = "Fruits" // Category for Jammu Apple
 				},
 				new Product
 				{
@@ -48,7 +49,19 @@ namespace IP_AmazonFreshIndia_Project.Data
 					Unit = "Box",
 					VendorId = 2,
 					WarehouseId = 2,
-					SoldCount = 15
+					SoldCount = 15,
+					Category = "Grocery" // Category for Himalayan Honey
+				},
+				new Product
+				{
+					ProductId = 3,
+					Name = "Kashmiri Saffron",
+					UnitPrice = 25.99m,
+					Unit = "Gram",
+					VendorId = 1,
+					WarehouseId = 1,
+					SoldCount = 20,
+					Category = "Spices" // Category for Kashmiri Saffron
 				}
 			);
 		}

@@ -1,0 +1,52 @@
+@model IP_AmazonFreshIndia_Project.ViewModels.ProductFilterViewModel
+
+<!-- Path: Areas/Admin/Views/Product/_FilterPanel.cshtml -->
+
+<form asp-controller="Product" asp-action="Index" method="get">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="category">Category:</label>
+				<select id="category" name="category" class="form-control">
+					<option value="">All</option>
+					@foreach (var category in Model.Categories)
+					{
+						<text>
+																<option value="@category">@category</option>
+						</text>
+					}
+				</select>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="warehouse">Warehouse:</label>
+				<select id="warehouse" name="warehouse" class="form-control">
+					<option value="">All</option>
+					@foreach (var warehouse in Model.Warehouses)
+					{
+													<option value="@warehouse" >@warehouse</option>
+					}
+				</select>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="vendor">Vendor:</label>
+				<select id="vendor" name="vendor" class="form-control">
+					<option value="">All</option>
+					@foreach (var vendor in Model.Vendors)
+					{
+						@* <option value="@vendor" @(Model.SelectedVendor == vendor ? "selected" : "")>@vendor</option> *@
+							<option value="@vendor" >@vendor</option>
+					}
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary">Apply Filter</button>
+		</div>
+	</div>
+</form>

@@ -1,51 +1,59 @@
-﻿@{
-    Layout = "_Layout";
+﻿@model IP_AmazonFreshIndia_Project.ViewModels.ProductFilterViewModel
 
-    string controller =
-        ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
-    string action =
-        ViewContext.RouteData.Values["action"]?.ToString() ?? "";
-}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Admin Panel</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="~/css/styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-9hDTgJzG+uv+9TrFIdtp3z4vjRyI6HZc+Ie4gEwyjeF1AbNb/J2kJpCkxnlHN2A0r0QgWzxy3Fxtubw/iTge/Q==" crossorigin="anonymous" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">My Shop</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<nav class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="navbar-nav me-auto">
+						<a class="nav-item nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")"
+						   asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
+						<a class="nav-item nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Product" ? "active" : "")"
+						   asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
+						<a class="nav-item nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Order" ? "active" : "")"
+						   asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
+						<a class="nav-item nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" ? "active" : "")"
+						   asp-area="Admin" asp-controller="Customer" asp-action="Index">Customers</a>
+					</div>
+					<div class="navbar-nav navbar-right">
+						<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">View Site</a>
+					</div>
+				</nav>
+			</div>
+		</nav>
+	</header>
+	<main class="container">
+		<!-- Render the body content -->
+		@RenderBody()
 
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">My Guitar Shop</a>
-            <button class="navbar-toggler" type="button" 
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link 
-                      @(controller == "Home" && action == "Index" ? "active" : "")"
-                      asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-item nav-link 
-                      @(controller == "Product" ? "active" : "")"
-                      asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
-                    <a class="nav-item nav-link
-                      @(controller == "Order" ? "active" : "")"
-                      asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
-                    <a class="nav-item nav-link
-                      @(controller == "Customer" ? "active" : "")"
-                       asp-area="Admin" asp-controller="Customer" asp-action="Index">Customers</a>
-                    
-                </div>
-                <div class="navbar-nav navbar-right">
-                    <a class="nav-link"
-                      asp-area="" asp-controller="Home" asp-action="Index">View Site</a>
-                </div>
-            </nav>
-        </div>
-    </nav>
-</header>
-<main>
-    @RenderBody()
-</main>
+		<!-- Include the filter panel -->
+		@Html.Partial("~/Areas/Admin/Views/Product/_FilterPanel.cshtml", Model)
+	</main>
 
-@section scripts{
-    @RenderSection("scripts", required:false)
-}
+	<footer class="footer mt-auto py-3 bg-light">
+		<div class="container">
+			<span class="text-muted">Place your footer content here.</span>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js" integrity="sha512-3rGKoFNsHXPm2NzpxWtRNEF9EZJw9XHQbJx3GXR0Mi14Nk7dTc4UWZ4t9Tb4ZQfLmz+mmveLndFQGD+mmFsukg==" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzUUMwNh2mAJF/N8r9FqJFJwwApJhBDl/u7BWFUpjZYyyDx+q4Z7D/QfEKJskbc8" crossorigin="anonymous"></script>
+</body>
+</html>

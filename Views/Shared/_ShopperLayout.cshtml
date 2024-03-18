@@ -1,10 +1,10 @@
 ﻿@{
-    Layout = "_Layout";
+	Layout = "_Layout";
 
-    string controller =
-        ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
-    string action =
-        ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+	string controller =
+		ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+	string action =
+		ViewContext.RouteData.Values["action"]?.ToString() ?? "";
 }
 
 <header>
@@ -21,7 +21,7 @@
                       asp-controller="Home" asp-action="Index">Home</a>
                     <a class="nav-item nav-link 
                       @(controller == "Product" ? "active" : "")"
-                      asp-controller="Product" asp-action="Index">Products</a>
+                      asp-controller="Product" asp-area="Admin" asp-action="Index">Products</a>
                     <a class="nav-item nav-link
                       @(controller == "Home" && action == "About" ? "active" : "")"
                       asp-controller="Home" asp-action="About">About</a>
