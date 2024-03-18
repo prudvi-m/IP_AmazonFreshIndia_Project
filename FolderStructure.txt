@@ -1,0 +1,53 @@
+IP_AmazonFreshIndia_Project/
+│
+├── Areas/
+│   ├── Admin/
+│   │   ├── Controllers/
+│   │   │   ├── CustomerController.cs
+│   │   │   └── HomeController.cs
+│   │   │   └── OrderController.cs
+│   │   │   └── ProductController.cs
+│   │   ├── Data/
+│   │   │   └── ApplicationDbContext.cs
+│   │   ├── Models/
+│   │   │   ├── Product.cs
+│   │   │   └── Vendor.cs
+│   │   │   └── Warehouse.cs
+│   │   ├── Views/
+│   │   │   ├── Home/
+│   │   │   │   └── Index.cshtml
+│   │   │   │   └── Privacy.cshtml
+│   │   │   ├── Product/
+│   │   │   │   └── Index.cshtml
+│   │   │   └── Shared/
+│   │   │       └── _AdminLayout.cshtml
+│   │   │   └── _ViewImports.cshtml
+│   │   │   └── _ViewStart.cshtml
+├── Controllers/
+│   └── HomeController.cs (Fallback controller for routing)
+├── Data/
+│   └── ApplicationDbContext.cs
+├── Models/
+│   └── ErrorViewModel.cs
+├── ViewModels/
+│   └── ProductViewModel.cs (Place ViewModels here)
+├── Views/
+│   ├── Shared/
+│   │   ├── _Layout.cshtml
+│   │   ├── _AdminNav.cshtml
+│   │   └── _ShopperNav.cshtml
+│   └── Home/
+│       └── Index.cshtml (Fallback view for HomeController)
+├── wwwroot/
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   └── scripts.js
+│   └── lib/
+│       └── (External CSS and JavaScript libraries)
+└── appsettings.json
+└── Program.cs
+└── IP_AmazonFreshIndia_Project.csproj
+└── IP_AmazonFreshIndia_Project.csproj.user
+└── IP_AmazonFreshIndia_Project.sln
+└── amazon.sqlite
