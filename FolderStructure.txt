@@ -13,11 +13,18 @@ IP_AmazonFreshIndia_Project/
 │   │   │   ├── Product.cs
 │   │   │   └── Vendor.cs
 │   │   │   └── Warehouse.cs
+│   │   ├── ViewModels/
+│   │   │   ├── ProductFilterViewModel.cs
+│   │   │   └── ProductViewModel.cs
 │   │   ├── Views/
 │   │   │   ├── Home/
 │   │   │   │   └── Index.cshtml
 │   │   │   │   └── Privacy.cshtml
 │   │   │   ├── Product/
+│   │   │   │   └── _FilterPanel.cshtml
+│   │   │   │   └── Create.cshtml
+│   │   │   │   └── Delete.cshtml
+│   │   │   │   └── Edit.cshtml
 │   │   │   │   └── Index.cshtml
 │   │   │   └── Shared/
 │   │   │       └── _AdminLayout.cshtml
@@ -25,19 +32,25 @@ IP_AmazonFreshIndia_Project/
 │   │   │   └── _ViewStart.cshtml
 ├── Controllers/
 │   └── HomeController.cs (Fallback controller for routing)
-├── Data/
-│   └── ApplicationDbContext.cs
+│   └── ProductController.cs
+├── Migrations/
+│   └── 20240318045124_v1.cs
 ├── Models/
 │   └── ErrorViewModel.cs
-├── ViewModels/
-│   └── ProductViewModel.cs (Place ViewModels here)
+├── Data/
+│   └── ApplicationDbContext.cs
 ├── Views/
+│   ├── Home/
+│   │   ├── Index.cshtml (Fallback view for HomeController)
+│   │   ├── Privacy.cshtml 
 │   ├── Shared/
 │   │   ├── _Layout.cshtml
-│   │   ├── _AdminNav.cshtml
+│   │   ├── _Layout.cshtml.css
 │   │   └── _ShopperNav.cshtml
-│   └── Home/
-│       └── Index.cshtml (Fallback view for HomeController)
+│   │   ├── _ValidationScriptsPartial.cshtml
+│   │   ├── Error.cshtml
+│   │   │   └── _ViewImports.cshtml
+│   │   │   └── _ViewStart.cshtml
 ├── wwwroot/
 │   ├── css/
 │   │   └── styles.css
@@ -45,9 +58,9 @@ IP_AmazonFreshIndia_Project/
 │   │   └── scripts.js
 │   └── lib/
 │       └── (External CSS and JavaScript libraries)
-└── appsettings.json
-└── Program.cs
-└── IP_AmazonFreshIndia_Project.csproj
-└── IP_AmazonFreshIndia_Project.csproj.user
-└── IP_AmazonFreshIndia_Project.sln
+└── .gitignore
 └── amazon.sqlite
+└── appsettings.json
+└── FolderStructure.txt
+└── IP_AmazonFreshIndia_Project.csproj
+└── Program.cs
