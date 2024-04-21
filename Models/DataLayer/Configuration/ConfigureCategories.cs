@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace IP_AmazonFreshIndia_Project.Models
 {
-	internal class SeedCategories : IEntityTypeConfiguration<Category>
+	internal class ConfigureCategories : IEntityTypeConfiguration<Category>
 	{
 		public void Configure(EntityTypeBuilder<Category> entity)
 		{

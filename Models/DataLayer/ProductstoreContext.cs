@@ -41,10 +41,10 @@ namespace IP_AmazonFreshIndia_Project.Models
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder.ApplyConfiguration(new SeedWarehouses());
-            modelBuilder.ApplyConfiguration(new SeedProducts());
-            modelBuilder.ApplyConfiguration(new SeedCategories());
-            modelBuilder.ApplyConfiguration(new SeedProductCategories());
+            modelBuilder.ApplyConfiguration(new ConfigureWarehouses());
+            modelBuilder.ApplyConfiguration(new ConfigureProducts());
+            modelBuilder.ApplyConfiguration(new ConfigureCategories());
+            modelBuilder.ApplyConfiguration(new ConfigureProductCategories());
         }
 
         public static async Task CreateAdminUser(IServiceProvider serviceProvider)
