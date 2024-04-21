@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using IP_AmazonFreshIndia_Project.Models;
 using Microsoft.AspNetCore.Http;
+using System.Runtime.CompilerServices;
+using System.Linq;
 
 
 namespace IP_AmazonFreshIndia_Project.Controllers
@@ -45,8 +47,12 @@ namespace IP_AmazonFreshIndia_Project.Controllers
                 }),
                 CurrentRoute = builder.CurrentRoute,
                 TotalPages = builder.GetTotalPages(data.Products.Count)
-            };
 
+            };
+            vm.Vendors = vm.Products.Select(p => p.Vendor)
+                .Where(v => !string.IsNullOrEmpty(v))
+                .Distinct()
+                .ToList();
             return View(vm);
         }
 

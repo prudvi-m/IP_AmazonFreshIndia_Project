@@ -10,6 +10,8 @@ namespace IP_AmazonFreshIndia_Project.Models
 
 		public IEnumerable<Category> Categories { get; set; }
 		public IEnumerable<Warehouse> Warehouses { get; set; }
+
+		public List<string> Vendors { get; set; }
 		public Dictionary<string, string> Prices =>
 			new Dictionary<string, string> {
 				{ "under7", "Under $7" },

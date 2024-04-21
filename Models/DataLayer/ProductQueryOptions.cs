@@ -10,6 +10,12 @@ namespace IP_AmazonFreshIndia_Project.Models
 			{
 				Where = b => b.WarehouseId == builder.CurrentRoute.WarehouseFilter;
 			}
+			if (builder.IsFilterByVendor)
+			{
+				Where = b => b.Vendor == builder.CurrentRoute.VendorFilter;
+			}
+
+			
 			if (builder.IsFilterByPrice)
 			{
 				if (builder.CurrentRoute.PriceFilter == "under7")
@@ -25,7 +31,6 @@ namespace IP_AmazonFreshIndia_Project.Models
 				if (id > 0)
 					Where = b => b.ProductCategories.Any(ba => ba.Category.CategoryId == id);
 			}
-
 			if (builder.IsSortByWarehouse)
 			{
 				OrderBy = b => b.Warehouse.Name;
@@ -33,6 +38,10 @@ namespace IP_AmazonFreshIndia_Project.Models
 			else if (builder.IsSortByPrice)
 			{
 				OrderBy = b => b.Price;
+			}
+			else if (builder.IsSortByVendor)
+			{
+				OrderBy = b => b.Vendor;
 			}
 			else
 			{

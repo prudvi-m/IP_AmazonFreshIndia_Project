@@ -146,16 +146,30 @@
 
     <script>
 
-    function displayFileName() {
-    const input = document.getElementById('productImageInput');
-    const fileNameSpan = document.getElementById('productImageFileName');
-    if (input.files.length > 0) {
-        fileNameSpan.textContent = input.files[0].name;
-    } else {
-        fileNameSpan.textContent = 'No file chosen';
-    }
-}
+        function displayFileName() {
+            const input = document.getElementById('productImageInput');
+            const fileNameSpan = document.getElementById('productImageFileName');
+            if (input.files.length > 0) {
+                fileNameSpan.textContent = input.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'No file chosen';
+            }
+        }
 
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('myForm');
+            form.addEventListener('submit', function(event) {
+                var updatedImageInput = document.getElementById('productImageInput');
+
+                // Check if the updatedImageInput has a file selected
+                if (updatedImageInput.files.length === 0 && !document.querySelector('[name="existingFile"]').value.trim()) {
+                    alert('Please select a product image.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+
+    </script>
 
 </form>
+

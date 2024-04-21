@@ -25,11 +25,13 @@
         <option value="@ProductsGridDTO.DefaultFilter">All</option>
     </select>
 
-    <label>Warehouse: </label>
-    <select name="filter" class="form-control m-2"
-            asp-items="@(new SelectList(
-            Model.Warehouses, "WarehouseId", "Name", current.WarehouseFilter))">
-        <option value="@ProductsGridDTO.DefaultFilter">All</option>
+    <label>Vendor: </label>
+    <select name="VendorFilter" class="form-control m-2">
+        <option value="">All Vendors</option>
+        @foreach (var vendor in Model.Vendors)
+        {
+            <option value="@vendor">@vendor</option>
+        }
     </select>
 
     <label>Price: </label>
@@ -38,6 +40,14 @@
             Model.Prices, "Key", "Value", current.PriceFilter))">
         <option value="@ProductsGridDTO.DefaultFilter">All</option>
     </select>
+
+    <label>Vendor: </label>
+    <select name="filter" class="form-control m-2"
+            asp-items="@(new SelectList(
+            Model.Vendors, current.WarehouseFilter))">
+        <option value="@ProductsGridDTO.DefaultFilter">All</option>
+    </select>
+
 
     <button type="submit" class="btn btn-primary btn-sm mr-2">Filter</button>
     <button type="submit" class="btn btn-primary btn-sm"
@@ -77,6 +87,13 @@
                     <a asp-action="List" asp-all-route-data="@routes"
                        class="text-dark">Price</a>
                 </th>
+                <th>
+                    @{
+                        routes.SetSortAndDirection(nameof(Product.Vendor), current);
+                    }
+                    <a asp-action="List" asp-all-route-data="@routes"
+                       class="text-dark">Vendor</a>
+                </th>
                   <th>Image</th>
                 <th></th>
             </tr>
@@ -84,44 +101,45 @@
         <tbody>
             @foreach (Product product in Model.Products)
             {
-                        <tr>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@product.ProductId"
-                                    asp-route-slug="@product.Name.Slug()">
-                            @product.Name
-                                </a>
-                            </td>
-                            <td>
-                        @foreach (var ba in product.ProductCategories)
-                        {
-                                                    <p>
-                                                        <a asp-action="Details" asp-controller="Category"
-                                                            asp-route-id="@ba.CategoryId"
-                                                            asp-route-slug="@ba.Category.Name.Slug()">
-                                    @ba.Category.Name
-                                                        </a>
-                                                    </p>
-                        }
-                            </td>
-                            <td>@product.Warehouse?.Name</td>
-                            <td>@product.Price.ToString("c", culture)</td>
-                                <td>
-                        @if (!string.IsNullOrEmpty(product.ProductImage))
-                        {
-                            <img src="@product.ProductImage" alt="Product Image" style="max-width: 100px; max-height: 100px;" />
-                        }
-                        else
-                        {
-                            <p>No image available</p>
-                        }
-                        </td>
-                            <td>
-                                <button type="submit" name="id" value="@product.ProductId"
-                                        class="btn btn-primary btn-sm">
-                                    Add To Cart
-                                </button>
-                            </td>
-                        </tr>
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@product.ProductId"
+                            asp-route-slug="@product.Name.Slug()">
+                    @product.Name
+                        </a>
+                    </td>
+                    <td>
+                @foreach (var ba in product.ProductCategories)
+                {
+                                            <p>
+                                                <a asp-action="Details" asp-controller="Category"
+                                                    asp-route-id="@ba.CategoryId"
+                                                    asp-route-slug="@ba.Category.Name.Slug()">
+                            @ba.Category.Name
+                                                </a>
+                                            </p>
+                }
+                    </td>
+                    <td>@product.Warehouse?.Name</td>
+                    <td>@product.Price.ToString("c", culture)</td>
+                    <td>@product.Vendor</td>
+                    <td>
+                @if (!string.IsNullOrEmpty(product.ProductImage))
+                {
+                    <img src="@product.ProductImage" alt="Product Image" style="max-width: 100px; max-height: 100px;" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+                </td>
+                    <td>
+                        <button type="submit" name="id" value="@product.ProductId"
+                                class="btn btn-primary btn-sm">
+                            Add To Cart
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -139,7 +157,7 @@
     for (int i = 1; i <= Model.TotalPages; i++)
     {
         routes.PageNumber = i;
-                                        <a asp-action="List" asp-all-route-data="@routes"
-                                            class="btn btn-outline-primary @Nav.Active(i, current.PageNumber)">@i</a>
+            <a asp-action="List" asp-all-route-data="@routes"
+                class="btn btn-outline-primary @Nav.Active(i, current.PageNumber)">@i</a>
     }
 }
