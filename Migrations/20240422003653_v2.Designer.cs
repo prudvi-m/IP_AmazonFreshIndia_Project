@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IPAmazonFreshIndiaProject.Migrations
 {
     [DbContext(typeof(IP_AmazonFreshIndia_ProjectContext))]
-    [Migration("20240421233852_v1")]
-    partial class v1
+    [Migration("20240422003653_v2")]
+    partial class v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
