@@ -9,6 +9,7 @@ namespace IP_AmazonFreshIndia_Project.Models
 
 		public string Category { get; set; } = DefaultFilter;
 		public string Warehouse { get; set; } = DefaultFilter;
+		public string Vendor { get; set; } = DefaultFilter;
 		public string Price { get; set; } = DefaultFilter;
 	}
 }

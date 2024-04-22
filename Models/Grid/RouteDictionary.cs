@@ -9,6 +9,7 @@ namespace IP_AmazonFreshIndia_Project.Models
 		public const string Warehouse = "warehouse-";
 		public const string Price = "price-";
 		public const string Category = "category-";
+		public const string Vendor = "vendor-";
 	}
 
 	public class RouteDictionary : Dictionary<string, string>
@@ -53,6 +54,13 @@ namespace IP_AmazonFreshIndia_Project.Models
 			get => Get(nameof(ProductsGridDTO.Warehouse))?.Replace(FilterPrefix.Warehouse, "");
 			set => this[nameof(ProductsGridDTO.Warehouse)] = value;
 		}
+
+		public string VendorFilter
+		{
+			get => Get(nameof(ProductsGridDTO.Vendor))?.Replace(FilterPrefix.Vendor, "");
+			set => this[nameof(ProductsGridDTO.Vendor)] = value;
+		}
+
 
 		public string PriceFilter
 		{

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace IP_AmazonFreshIndia_Project.Models
 {
@@ -21,6 +22,10 @@ namespace IP_AmazonFreshIndia_Project.Models
 		[Required(ErrorMessage = "Please enter an email address.")]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
+
+		[Required(ErrorMessage = "Date of Birth is required.")]
+    	[DataType(DataType.Date)]
+    	public DateTime DOB { get; set; }
 
 		[Required(ErrorMessage = "Please enter a password.")]
 		[DataType(DataType.Password)]
