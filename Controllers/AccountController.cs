@@ -33,7 +33,8 @@ namespace IP_AmazonFreshIndia_Project.Controllers
 					UserName = model.Username,
 					Firstname = model.Firstname,
 					Lastname = model.Lastname,
-					Email = model.Email
+					Email = model.Email,
+					DOB = model.DOB,
 				};
 				var result = await userAdmin.CreateAsync(user, model.Password);
 

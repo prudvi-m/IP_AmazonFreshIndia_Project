@@ -47,40 +47,97 @@ namespace IP_AmazonFreshIndia_Project.Models
             modelBuilder.ApplyConfiguration(new ConfigureProductCategories());
         }
 
+        // public static async Task CreateAdminUser(IServiceProvider serviceProvider)
+        // {
+        //     UserManager<User> userAdmin =
+        //         serviceProvider.GetRequiredService<UserManager<User>>();
+        //     RoleManager<IdentityRole> roleAdmin =
+        //         serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+
+        //     var userCreationList = new List<UserCreation>{
+        //         new UserCreation() {
+        //             username = "vamshi",
+        //             password = "Testing",
+        //             roleName = "Admin",
+        //             dob = DateTime.Today.AddYears(-25)
+
+        //         },
+        //         new UserCreation() {
+        //             username = "normal",
+        //             password = "Testing",
+        //             roleName = "User",
+        //             dob = DateTime.Today.AddYears(-24)
+        //         },
+        //     };
+
+        //     foreach (var userCreation in userCreationList)
+        //     {
+
+        //         if (await roleAdmin.FindByNameAsync(userCreation.roleName) == null)
+        //             await roleAdmin.CreateAsync(new IdentityRole(userCreation.roleName));
+
+
+        //         if (await userAdmin.FindByNameAsync(userCreation.username) == null)
+        //         {
+        //             User user = new User { UserName = userCreation.username };
+        //             var result = await userAdmin.CreateAsync(user, userCreation.password);
+        //             if (result.Succeeded)
+        //                 await userAdmin.AddToRoleAsync(user, userCreation.roleName);
+        //         }
+        //     }
+        // }
+
         public static async Task CreateAdminUser(IServiceProvider serviceProvider)
         {
-            UserManager<User> userAdmin =
-                serviceProvider.GetRequiredService<UserManager<User>>();
-            RoleManager<IdentityRole> roleAdmin =
-                serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            UserManager<User> userAdmin = serviceProvider.GetRequiredService<UserManager<User>>();
+            RoleManager<IdentityRole> roleAdmin = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-
-            var userCreationList = new List<UserCreation>{
-                new UserCreation() {
-                    username = "admin",
-                    password = "Testing",
-                    roleName = "Admin"
-                },
-                new UserCreation() {
+            var userCreationList = new List<UserCreation>
+            {
+                new UserCreation
+                {
                     username = "vamshi",
                     password = "Testing",
-                    roleName = "User"
+                    roleName = "Admin",
+                    dob = DateTime.Today.AddYears(-25)
                 },
+                new UserCreation
+                {
+                    username = "normal",
+                    password = "Testing",
+                    roleName = "User",
+                    dob = DateTime.Today.AddYears(-24)
+                }
             };
 
             foreach (var userCreation in userCreationList)
             {
-
-                if (await roleAdmin.FindByNameAsync(userCreation.roleName) == null)
+                // Create role if it doesn't exist
+                if (!await roleAdmin.RoleExistsAsync(userCreation.roleName))
+                {
                     await roleAdmin.CreateAsync(new IdentityRole(userCreation.roleName));
+                }
 
-
+                // Create user if it doesn't exist
                 if (await userAdmin.FindByNameAsync(userCreation.username) == null)
                 {
-                    User user = new User { UserName = userCreation.username };
+                    User user = new User
+                    {
+                        UserName = userCreation.username,
+                        DOB = userCreation.dob,
+                    };
+
                     var result = await userAdmin.CreateAsync(user, userCreation.password);
+
                     if (result.Succeeded)
+                    {
                         await userAdmin.AddToRoleAsync(user, userCreation.roleName);
+                    }
+                    else
+                    {
+                        // Handle user creation failure (e.g., log error)
+                    }
                 }
             }
         }
@@ -92,5 +149,7 @@ namespace IP_AmazonFreshIndia_Project.Models
         public string username = "";
         public string password = "";
         public string roleName = "";
+
+        public DateTime dob { get; set; }
     }
 }
