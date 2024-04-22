@@ -97,14 +97,14 @@ namespace IP_AmazonFreshIndia_Project.Models
             {
                 new UserCreation
                 {
-                    username = "vamshi",
+                    username = "admin",
                     password = "Testing",
                     roleName = "Admin",
                     dob = DateTime.Today.AddYears(-25)
                 },
                 new UserCreation
                 {
-                    username = "normal",
+                    username = "user",
                     password = "Testing",
                     roleName = "User",
                     dob = DateTime.Today.AddYears(-24)
